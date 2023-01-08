@@ -1,6 +1,7 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Navbar({ title }) {
   return (
@@ -8,18 +9,18 @@ export default function Navbar({ title }) {
       <div className="container mx-auto">
         <div className="flex px-2 mx-2">
           <FaGithub className="inline pr-2 text-3xl" />
-          <a href="/" className="text-lg font-bold align-middle">
+          <Link to="/" className="text-lg font-bold align-middle">
             {title}
-          </a>
+          </Link>
         </div>
         <div className="flex-1 px-2 mx-2 ">
           <div className="flex justify-end space-x-3">
-            <a href="/" className="btn btn-ghost btn-sm rounded-btn">
+            <Link to="/" className="btn btn-ghost btn-sm rounded-btn">
               Home
-            </a>
-            <a href="/about" className="btn btn-ghost btn-sm rounded-btn">
+            </Link>
+            <Link to="/about" className="btn btn-ghost btn-sm rounded-btn">
               About
-            </a>
+            </Link>
           </div>
         </div>
       </div>

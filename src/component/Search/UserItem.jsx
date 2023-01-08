@@ -15,7 +15,7 @@ export default function UserItem({ user }) {
         </div>
         <div>
           <h2 className="card-title text-black">{login}</h2>
-          <Link to="" className="text-black">
+          <Link to={`/user/${login}`} className="text-black">
             Visit Profile
           </Link>
         </div>

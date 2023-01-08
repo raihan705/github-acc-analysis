@@ -17,7 +17,6 @@ const GithubProvider = ({ children }) => {
 
   //Search users
   const searchUsers = async (searchName) => {
-    setLoading();
     const params = new URLSearchParams({
       q: searchName,
     });
@@ -28,7 +27,18 @@ const GithubProvider = ({ children }) => {
     setLoading(false);
   };
 
-  console.log(users);
+  // get single user and get repo
+
+  const getSingleUserData = async (login) => {
+    const response = await fetch(`https://api.github.com/users/${login}`);
+    if (response.status === 404) {
+      console.log("data is not gound");
+    } else {
+      const data = await response.json();
+      setGithubUser(data);
+    }
+  };
+
   return (
     <GithubContext.Provider
       value={{
@@ -38,6 +48,7 @@ const GithubProvider = ({ children }) => {
         searchUsers,
         loading,
         users,
+        getSingleUserData,
       }}
     >
       {children}
