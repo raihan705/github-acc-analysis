@@ -1,13 +1,12 @@
-import Userinfo from "../component/userinfo/Userinfo";
-import Usercardinfo from "../component/userinfo/Usercardinfo";
-import AllChart from "../component/chart/AllChart";
+import React from "react";
+import Usersearch from "../component/Search/Usersearch";
+import UserList from "../component/Search/UserList";
 
 export default function Home() {
   return (
-    <div>
-      <Userinfo />
-      <Usercardinfo />
-      <AllChart />
-    </div>
+    <>
+      <Usersearch />
+      <UserList />
+    </>
   );
 }
