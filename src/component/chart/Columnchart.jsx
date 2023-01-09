@@ -17,7 +17,7 @@ export default function Columnchart({ data }) {
   const chartConfigs = {
     type: "column3d", // The chart type
     width: "450", // Width of the chart
-    height: "400", // Height of the chart
+    height: "350", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
       // Chart Configuration

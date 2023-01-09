@@ -90,35 +90,13 @@ export default function AllChart() {
     },
   ];
   return (
-    <section className="section">
-      <Wrapper className="section-center">
+    <section className="section ">
+      <div className="section-center flex gap-2 flex-wrap h-[45%] ">
         <Piechart data={mostUsedLanguage} />
         <Barchart data={stars} />
         <Doughnutchart data={mostStarsObtainingLanguage} />
         <Columnchart data={forks} />
-      </Wrapper>
+      </div>
     </section>
   );
 }
-
-const Wrapper = styled.div`
-  display: grid;
-  justify-items: center;
-  gap: 2rem;
-  @media (min-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (min-width: 1200px) {
-    grid-template-columns: 2fr 3fr;
-  }
-  div {
-    width: 100% !important;
-  }
-  .fusioncharts-container {
-    width: 100% !important;
-  }
-  svg {
-    width: 100% !important;
-    border-radius: var(--radius) !important;
-  }
-`;

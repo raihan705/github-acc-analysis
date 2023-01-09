@@ -1,7 +1,4 @@
 import React, { createContext, useState } from "react";
-import mockUser from "./mockData/mockUser";
-import mockRepos from "./mockData/mockRepos";
-import mockFollowers from "./mockData/mockFollowers";
 
 // create a context for data passing to other component from this context xomponent
 const GithubContext = createContext();
@@ -9,9 +6,9 @@ const GithubContext = createContext();
 // create a provider to pass value
 
 const GithubProvider = ({ children }) => {
-  const [githubUser, setGithubUser] = useState(mockUser);
-  const [githubRepos, setGithubRepos] = useState(mockRepos);
-  const [githubFollowers, setGithubFollowers] = useState(mockFollowers);
+  const [githubUser, setGithubUser] = useState({});
+  const [githubRepos, setGithubRepos] = useState([]);
+
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +24,7 @@ const GithubProvider = ({ children }) => {
     setLoading(false);
   };
 
-  // get single user and get repo
+  // get single user data
 
   const getSingleUserData = async (login) => {
     const response = await fetch(`https://api.github.com/users/${login}`);
@@ -39,16 +36,30 @@ const GithubProvider = ({ children }) => {
     }
   };
 
+  // get single user  repo
+
+  const getSingleUserDataRepo = async (login) => {
+    const response = await fetch(
+      `https://api.github.com/users/${login}/repos?per_page=100`
+    );
+    if (response.status === 404) {
+      console.log("data is not gound");
+    } else {
+      const data = await response.json();
+      setGithubRepos(data);
+    }
+  };
+
   return (
     <GithubContext.Provider
       value={{
         githubUser,
         githubRepos,
-        githubFollowers,
         searchUsers,
         loading,
         users,
         getSingleUserData,
+        getSingleUserDataRepo,
       }}
     >
       {children}

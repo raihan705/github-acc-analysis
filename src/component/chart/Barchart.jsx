@@ -17,7 +17,7 @@ export default function Barchart({ data }) {
   const chartConfigs = {
     type: "bar3d", // The chart type
     width: "450", // Width of the chart
-    height: "400", // Height of the chart
+    height: "350", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
       // Chart Configuration
@@ -30,7 +30,7 @@ export default function Barchart({ data }) {
         xAxisName: "Language",
         //Set the y-axis name
         yAxisName: "Used",
-        numberSuffix: "K",
+
         //Set the theme for your chart
         theme: "fusion",
       },
